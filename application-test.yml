@@ -1,0 +1,108 @@
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:mysql://192.168.2.5:3306/v70?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+    username: root
+    password: kingapex
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      web-stat-filter:
+        enabled: false
+      goods:
+        url: jdbc:mysql://192.168.2.5:3306/v70_goods?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+
+      member:
+        url: jdbc:mysql://192.168.2.5:3306/v70_member?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+
+      sss:
+        url: jdbc:mysql://192.168.2.5:3306/v70_sss?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+
+      system:
+        url: jdbc:mysql://192.168.2.5:3306/v70_system?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+
+      trade:
+        url: jdbc:mysql://192.168.2.5:3306/v70_trade?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+
+      distribution:
+        url: jdbc:mysql://192.168.2.5:3306/v70_distribution?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  rabbitmq:
+    host: 192.168.2.5
+    port: 5672
+    username: haobeck
+    password: 752513
+    virtual-host: javashop-test
+  data: 
+    elasticsearch: 
+      cluster-name: es_cluster
+      cluster-nodes:  192.168.2.8:9300,192.168.2.9:9300
+
+  # 上传文件大小上限设置
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+      
+logging:
+  level:
+    org.springframework: ERROR
+    com.enation.app : ERROR
+
+redis:
+  type: standalone
+  config :
+    type: manual
+  host: 192.168.2.5
+  port: 6379
+  password:
+  maxIdle: 500
+  maxTotal: 500
+  maxWaitMillis: -1
+javashop:
+  product: stand
+  timeout:
+    accessTokenTimeout:  30
+    refreshTokenTimeout: 35
+    captchaTimout:  120
+    smscodeTimout: 120
+  alipay: 
+    merchant-private-key: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDhO9dJxtwzOd7vNgOMAfuZalWwnH97HOMzxI34dby7ZepVMQ+xFwPhPVa3Eu72kHVVHnkpXXzrxA3Ri0hk5vUudofSqqdIARuELLoUSaHWmupHQdJiFN1lNb+Rnc4M/+DybYCEJbZWfIRIc/48kg414zZDu7/8waLa1wlWbRKhvWFojHrK86SJcjAagf03aLWAMMqvGNfyCAqJa0jq0AvHLrrPDeigapG0SSUe9P5psCUhwjSx+qOL2yhWPfivlTgdLQryh4t9h0MuQ7AyQtVfn/B+F0js6iB6Cn16QJHA7FJvy3stEEA+XN7shn2l//q0ktQkXoVtgLvJKjvPv+bhAgMBAAECggEAF29liCyjzsSvuI4TMmcmaaERx22RKhsoXMOPzhFaENma10BilJeDdNUwB551tLv1KWUhUDeE/vcIRQxL/Qu26R22JipRe4F5/ne06NV8fFrkE4P6wu/O1XARPbKAtQOOwUq5e4Z9AWS1UuCWzHCZ/+tjQwru//qZ2lFTjGWO8bsTxSVpX86jo+se62HExhWyv/Bdmch1A+w1S13o2EdJ6k6mNDqtXAa4rgzsz1QuQsU1ShBx7sPkD3kTu7pH8uihXnGfqpzOZJ50rRu+zgDhX6DTucHR+LwIQY28kvPlGJORSCzXO4fUnpsiKJfFGUOhvY0hsDXUSNXEdbSemAv4kQKBgQDzXl/TrTzhNrllGFr4zMpPK+dDhC94yOSvPHtIoRqMe4N1GnXKohtv17cZuUJwcP/d4bkb1lDkuS6RmQCWP3Az/PqfGy1Dpgc2au0VVo9dWzsF+/qc/TLiZ/rpUi5IxTArtodc2UVB/z0hRkr8Q12Dd6HMJg1RMM9Zl8MazQCYXQKBgQDs7IJhKrP30ty6GHbTd42WSMHny6o7voKOL6WfRZyjFqNoItwotDxCdO5w5tfGNiCjyAXxlMCnFSf7b0Og8EqysaxRBvnVqP263Mar6WpvZqJvMqb8tM/e13UzWNIy5A75fru2ZYxKx1YSuuu9afcpJLtMpSw02bE46phpGq2QVQKBgDZce00+Ih4waiMh2JhArmQW63aSXUQ+o45dFTC5A8Qjhs6ulWco5LYL2lN9pVCWfSDj3cRREAq3LqbJJW9qRjbmqFjH6kl1GaFXKxQcHLP+v+VrTqSojigyj8J0X/BTU5pAEGZ2BdljGRWIrRFCPu4x18tRKKJdI8PgeW1QI3TlAoGAZM+mEo5HEZZJkW3DceuW9XF0AJtqjg1cJAAmKwVFxydk1HSw1SkL0wNKSgQPoCl77fS4grjW2MFpx9TqI9rbDfoH5lpfiAhmHlK+vnuNbGVxjHszDqgpIxrupbCPkFP2AzdnzA6diVwURdf/YxNptboJcG1/x+UxQZSg0WgmnhkCgYB/MY3JtgmvWR0hkarzwI3G2IT428ObfkrmWL+g7PdpfwNOt7aUQZVhVgH8v8+0A9W++lfeUNHyX8xNVrwriC09aTuIr5J6LC0tbWr9H/GHae2pxfnzGpIZEpu8WCXoMhao1JzjKti3fuNVzrAj2k/JFdNChSp3lKjfJ+B5N+0Kvw\u003d\u003d
+    app-id: 2017101909390405
+    alipay-public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqgzGUcz3Npp5Zss1JmSOjkjZvVi1pyV71A/R2K8HkaqHSEMTuAVk4mr+xojqQGIAihpzHrE3nFq9Cq612ncY9Uf2OabfpLqsilB+q97fBbd8YVNZq3thoFaYqYtmcv8tzDMLDUq1/6sHV3DJKrmyAMc7QfHuGZXRW5hGWDU2IDklump5/iWeDGDzPKZ+laHaiJbZ24ALmMiHKZlIHqYHkNvQlTNKgqBIbkjViQJf0PNQefgs6CcSsr5OpuMSiZLbgsOwh9o826JO2TMb18pkPnwNEW0cOcCyhngA1WvQxsrWQGSI/VRcUr3Ho0D1ZGmp09zmpON38N1eBmi3488TqwIDAQAB
+  weixin: 
+    pc:
+      mchid: 1272875901
+      appid: wxde2fcd7d020b05e5
+      app-secret: 21445a61830e5a640535f86f2ad49ca5
+      key: 21445a61830e5a640535f86f2ad49ca5
+      p12-path: 
+    native:
+      mchid: 1416251702
+      appid: wx35ab0feca89af616
+      app-secret: 4cd989ee3e8bd08149b6a8414eb36207
+      key: 4cd989ee3e8bd08149b6a8414eb36207
+      p12-path: 
+    react:
+      mchid: 1486907722
+      appid: wxea6dad1bd46739b4
+      app-secret: 1ac868cc99daca271e7edd0b506145b1
+      key: 1ac868cc99daca271e7edd0b506145b1
+      p12-path:
+  domain:
+    main: domain.com
+    buyer: www.yiqisi.s1.natapp.cc
+xxl:
+  job:
+    admin:
+      addresses:  http://192.168.2.5:8080/xxl-job-admin
+    executor:
+      appname: timing-job-execute 
+      ip: 
+      port: 6999
+      logpath:  /opt/xxl-serverlogs
+      logretentiondays: -1
+    accessToken:
